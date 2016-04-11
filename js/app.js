@@ -15,7 +15,8 @@ $(document).ready(function(){
         $('#count').replaceWith("<span id='count'>" + counter + "</span>");
     };
 
-    //Guessing section. If else statements
+    
+    //Start new game
 
     function gamePlay() { 
 
@@ -26,6 +27,8 @@ $(document).ready(function(){
 
         var guessChecker = (Math.abs(guessNumber - computerNumber));
             console.log(guessChecker);
+
+
 
 
         if(guessChecker === 0) {
@@ -48,6 +51,15 @@ $(document).ready(function(){
             $("#feedback").replaceWith("<h2 id='feedback'>" + "You're burning up!" + "</h2>");
         }
 
+        else if (guessChecker === 10 ) {
+            document.getElementById("gameMessage").innerHTML =  "Sorry you didnt guess the number, your streak has been reset. Try again. I'm thinking of a number between 1 and 100...";
+            streak = 0;
+            document.getElementById("score").innerHTML = streak;
+            guessTrack = 0;
+            ranNum = getRandomNum();
+            }     
+
+
         else {
             $("#feedback").replaceWith("<h2 id='feedback'>" + "You're freezing!" + "</h2>");
         }
@@ -56,7 +68,7 @@ $(document).ready(function(){
 
     };
 
-    //Guess Button
+    //Guess button function
 
     $("#guessButton").on("click", function(){
         
